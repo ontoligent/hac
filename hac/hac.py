@@ -25,13 +25,13 @@ class HAC:
         color_thresh (float): The threshhold at which to apply coloring in the dendropgram. Defaults to None.
     """
 
-    w:int = 10
-    label_size:int = 14
-    orientation:str = 'left'
-    dist_metric:str = 'cosine' 
-    linkage_method:str = 'ward' 
-    norm_type:str = 'l2' 
-    color_thresh:float = None
+    # w:int = 10
+    # label_size:int = 14
+    # orientation:str = 'left'
+    # dist_metric:str = 'cosine' 
+    # linkage_method:str = 'ward' 
+    # norm_type:str = 'l2' 
+    # color_thresh:float = None
     
     def __init__(self, X, labels=None):
         self.X = X
@@ -40,6 +40,15 @@ class HAC:
             self.labels = labels            
         else:
             self.labels = X.index.tolist()
+
+        # Initialize variables at the instance level
+        self.w:int = 10
+        self.label_size:int = 14
+        self.orientation:str = 'left'
+        self.dist_metric:str = 'cosine' 
+        self.linkage_method:str = 'ward' 
+        self.norm_type:str = 'l2' 
+        self.color_thresh:float = None
 
     def get_sims(self):
         self.SIMS = pdist(normalize(self.X, norm=self.norm_type), metric=self.dist_metric)
